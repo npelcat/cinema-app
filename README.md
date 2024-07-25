@@ -7,4 +7,3 @@
 - Favorite Page with local storage
 
 
-Hosted on vercel :
