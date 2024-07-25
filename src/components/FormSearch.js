@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 
 const FormSearch = () => {
+  const apiKey = process.env.REACT_APP_TMDB_API_KEY;
   const [moviesData, setMoviesData] = useState([]);
   const [search, setSearch] = useState("");
   const [sortGoodToBad, setSortGoodToBad] = useState(null);
@@ -10,10 +11,10 @@ const FormSearch = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=aeb2ac11241ab22476b762203695950e&query=${search}&language=fr-FR`
+        `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${search}&language=fr-FR`
       )
       .then((res) => setMoviesData(res.data.results));
-  }, [search]);
+  }, [search, apiKey]);
 
   return (
     <div className="form-component">

@@ -4,6 +4,7 @@ import axios from "axios";
 import Card from "../components/Card";
 
 const LikePage = () => {
+  const apiKey = process.env.REACT_APP_TMDB_API_KEY;
   const [listData, setListData] = useState([]);
 
   useEffect(() => {
@@ -15,11 +16,11 @@ const LikePage = () => {
     for (let i = 0; i < moviesId.length; i++) {
       axios
         .get(
-          `https://api.themoviedb.org/3/movie/${moviesId[i]}?api_key=aeb2ac11241ab22476b762203695950e`
+          `https://api.themoviedb.org/3/movie/${moviesId[i]}?api_key=${apiKey}`
         )
         .then((res) => setListData((listData) => [...listData, res.data]));
     }
-  }, []);
+  }, [apiKey]);
 
   return (
     <div className="user-list-page">
